@@ -3,6 +3,10 @@
     src: url('fonts/AmazDooMLeft.ttf');
 }
 
-.h1 {
-    font-family: Amaz;
+.section{
+    width: auto;
+}
+
+.condecss{
+    padding-top: 20% !important;
 }

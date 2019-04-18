@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <section class="row justify-content-center">
+        <h2>S'inscrire</h2>
+        <form method="post" class="col-8 border p-5">
+
+            {% if errors.email is defined %}
+                <div class="alert alert-danger">
+                    {{ errors.email }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" id="email" value="{{ user.email }}">
+            </div>
+
+            {% if errors.nickname is defined %}
+                <div class="alert alert-danger">
+                    {{ errors.nickname }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="nickname">Pseudo</label>
+                <input type="text" class="form-control" name="nickname" id="nickname" value="{{ user.nickname }}">
+            </div>
+
+            {% if errors.password is defined %}
+                <div class="alert alert-danger">
+                    {{ errors.password }}
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+
+            <div class="form-group">
+                <label for="passwordConfirm">Confirmer le mot de passe</label>
+                <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm">
+            </div>
+
+            <button type="submit" class="btn">S'inscrire</button>
+        </form>
+    </section>
+{% endblock %}

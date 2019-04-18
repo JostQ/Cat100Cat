@@ -3,7 +3,7 @@ nav.navigation{
     min-height: 100px;
 }
 
-a img{
+.logo-nav{
     height: 130px;
     width: auto;
 }
@@ -26,6 +26,7 @@ a img{
     margin-left: 6%;
 }
 
-li a{
+.navigation li a{
     font-size: 18px;
 }
+

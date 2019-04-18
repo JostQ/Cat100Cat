@@ -63,11 +63,7 @@ class UserController extends AbstractController
                 ];
                 $userManager->insert($user);
 
-                $validate = 'Vous vous êtes enregistré, vous pouvez vous connecter !';
-
-                $data['validate'] = $validate;
-
-                $view = 'User/login.html.twig';
+                header('Location: /user/login');
             } else {
                 $data['user'] = $post;
                 $data['errors'] = $errors;
@@ -98,15 +94,15 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $user = $userManager->selectUserByEmail($post['email']);
 
-            if (count($user) < 0) {
+            if (!$user) {
                 $errors['login'] = $errorSentence;
             } elseif (!password_verify($post['password'], $user['password'])) {
                 $errors['login'] = $errorSentence;
             }
 
             if (empty($errors)) {
-                $view = 'Home/index.html.twig';
                 $_SESSION = $user;
+                header('Location: /');
             } else {
                 $data['user'] = $post;
                 $data['errors'] = $errors;

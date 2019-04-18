@@ -49,22 +49,22 @@ class UserManager extends AbstractManager
 
     public function isEmailExist(string $email): bool
     {
-        $result = false;
+        $result = true;
 
         $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE email = :email');
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         if ($statement->execute()) {
             if (count($statement->fetchAll()) === 0) {
-                $result = true;
+                $result = false;
             }
         }
 
         return (bool)$result;
     }
 
-    public function selectUserByEmail(string $email): array
+    public function selectUserByEmail(string $email = '')
     {
-        $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . 'WHERE email = :email');
+        $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE email = :email');
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetch();

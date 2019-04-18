@@ -4,6 +4,11 @@
     <section class="row justify-content-center">
         <h2>Se Connecter</h2>
         <form method="post" class="col-8 border">
+            {% if session.validate is defined %}
+                <div class="alert alert-success">
+                    {{ session.validate }}
+                </div>
+            {% endif %}
             {% if errors.login is defined %}
                 <div class="alert alert-danger">
                     {{ errors.login }}

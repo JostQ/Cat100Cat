@@ -61,4 +61,12 @@ class UserManager extends AbstractManager
 
         return (bool)$result;
     }
+
+    public function selectUserByEmail(string $email): array
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . 'WHERE email = :email');
+        $statement->bindValue('email', $email, \PDO::PARAM_STR);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

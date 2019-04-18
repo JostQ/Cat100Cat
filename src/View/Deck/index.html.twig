@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Liste{% endblock %}
+
+{% block content %}
+{% for deck in decks %}
+    {{ deck.name }}
+    {{ deck.lord }}
+{% endfor %}
+{% endblock %}

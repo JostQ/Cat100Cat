@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+ {% block stylesheet %}
+     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+     <link rel="stylesheet" type="text/css" href="/assets/css/egglisting.css">
+ {% endblock %}
+{% block title %}Détails{% endblock %}
+
+{% block content %}
+    <div class="egg-card container">
+        <div class="egg-img">
+            <img src="{{ egg.image }}">
+        </div>
+        <div>
+            <h2 style="background-color: {{ egg.color }}">{{ egg.name }}</h2>
+<ul>
+    <li>Calibre : {{ egg.caliber }}</li>
+    <li>Rareté : {{ egg.rarity }}</li>
+    <li>Pouvoir : {{ egg.power }}</li>
+    <li>Origine : {{ egg.country }}</li>
+</ul>
+        </div>
+    </div>
+    {{ dump(egg) }}
+{% endblock %}

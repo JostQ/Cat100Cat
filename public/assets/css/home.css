@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Amaz;
+    src: url('fonts/AmazDooMLeft.ttf');
+}
+
+.section{
+    width: auto;
+}
+
+.row{
+    margin-top: 50px;
+}

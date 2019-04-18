@@ -38,6 +38,10 @@ abstract class AbstractController
             ]
         );
 
+        if (!isset($_SESSION['flash'])) {
+            $_SESSION['flash'] = [];
+        }
+
         $flash = $_SESSION['flash'];
 
         $this->twig->addGlobal('session', $_SESSION);

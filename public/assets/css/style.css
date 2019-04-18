@@ -1,22 +1,113 @@
-.navigation {
-    background-color: #D0B17A;
+/* HEADER */
 
+.navigation{
+    background-color:#D0B17A ;
+    min-height: 100px;
 }
 
-.navigation img{
-    height: 150px;
+.logo-nav{
+    height: 130px;
     width: auto;
 }
 
-.navigation > a {
-    color: #41521F !important;
+.navigation > a{
+    color:#41521F !important;
     margin-right: 100px;
-    margin-top: 65px;
+
 }
 
-.navigation li a {
-    color: #41521F !important;
+.navigation li a{
+    color:#41521F!important;
+    margin-left: 5em;
+    padding-top: 40px;
+}
+
+.navbar-nav{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 6%;
+}
+
+.navigation li a{
+    font-size: 18px;
+}
+
+/* FOOTER */
+
+footer
+{
+    background-color:#D0B17A ;
+    min-height: 100px;
+    color:#41521F;
+}
+
+.address
+{
+    position: relative;
+    right: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.logo_team
+{
+    height: 150px;
+    width: 150px;
+}
+
+.cat_logo
+{
     padding-top: 60px;
+    margin-left: 60px;
 }
 
+.links
+{
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
 
+.perma_link a
+{
+    text-decoration: none;
+    color:#41521F!important;
+}
+
+.perma_link ul
+{
+    list-style: none;
+}
+
+.social_media
+{
+    padding-top: 15px;
+}
+
+.social_media a
+{
+    filter: invert(100%);
+}
+
+.team_address
+{
+    justify-content: center;
+}
+
+.nous_trouver
+{
+    text-align: center;
+}
+
+.google_maps {
+    position: relative;
+    padding-bottom: 75%; // This is the aspect ratio
+    height: 0;
+    overflow: hidden;
+}
+.google_maps iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}

@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+ {% block stylesheet %}
+     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+     <link rel="stylesheet" type="text/css" href="/assets/css/egglisting.css">
+ {% endblock %}
+{% block content %}
+    <div class="eggs-list container">
+        {% for egg in eggs %}
+
+            <div class="eggs-card">
+                <a href="/details/show/{{ egg.id }}"><img class="eggs-img" src="{{ egg.image }}"></a>
+                <a href="/details/show/{{ egg.id }}">{{ egg.name }}</a><br>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

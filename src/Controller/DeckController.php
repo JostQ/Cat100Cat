@@ -18,6 +18,14 @@ use App\Model\DeckManager;
 class DeckController extends AbstractController
 {
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!$this->isConnected()) {
+            header('Location: /user/login');
+        }
+    }
 
     /**
      * Display deck listing

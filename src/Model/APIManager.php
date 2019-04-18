@@ -3,7 +3,6 @@
 
 namespace App\Model;
 
-
 class APIManager
 {
 
@@ -29,5 +28,4 @@ class APIManager
 
         return $data;
     }
-
 }

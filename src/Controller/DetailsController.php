@@ -20,4 +20,3 @@ class DetailsController extends AbstractController
         return $this->twig->render('Details/eggCards.html.twig', ['eggs'=>$eggs]);
     }
 }
-

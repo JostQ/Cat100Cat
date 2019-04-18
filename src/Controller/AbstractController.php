@@ -9,7 +9,6 @@
 
 namespace App\Controller;
 
-
 use Twig\Environment;
 use Twig\Extension\DebugExtension;
 use Twig\Loader\FilesystemLoader;
@@ -39,5 +38,14 @@ abstract class AbstractController
             ]
         );
         $this->twig->addExtension(new DebugExtension());
+    }
+
+    public function pureRequestPost(array $data): array
+    {
+        $post = [];
+        foreach ($data as $key => $datum) {
+            $post[$key] = trim($datum);
+        }
+        return $post;
     }
 }

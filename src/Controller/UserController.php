@@ -28,7 +28,7 @@ class UserController extends AbstractController
     public function signup()
     {
         $data = [];
-        $view = 'User/add.html.twig';
+        $view = 'User/signup.html.twig';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = [];
@@ -69,7 +69,8 @@ class UserController extends AbstractController
 
                 $view = 'User/login.html.twig';
             } else {
-                $data = $errors;
+                $data['user'] = $post;
+                $data['errors'] = $errors;
             }
         }
         return $this->twig->render($view, $data);
@@ -107,7 +108,8 @@ class UserController extends AbstractController
                 $view = 'Home/index.html.twig';
                 $_SESSION = $user;
             } else {
-                $data = $errors;
+                $data['user'] = $post;
+                $data['errors'] = $errors;
             }
         }
 

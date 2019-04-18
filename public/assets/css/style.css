@@ -1,6 +1,11 @@
-.navigation{
+nav.navigation{
     background-color:#D0B17A ;
     min-height: 100px;
+}
+
+a img{
+    height: 130px;
+    width: auto;
 }
 
 .navigation > a{
@@ -11,12 +16,16 @@
 
 .navigation li a{
     color:#41521F!important;
-margin-left: 50px;
+    margin-left: 5em;
     padding-top: 40px;
 }
 
-.maclasse{
+.navbar-nav{
     display: flex;
-
+    justify-content: space-around;
+    margin-left: 6%;
 }
 
+li a{
+    font-size: 18px;
+}

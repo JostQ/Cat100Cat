@@ -15,6 +15,7 @@
 
 .eggs-card {
     display: flex;
+    background-color:#D0B17A ;
     flex-direction: column;
     border: solid black 1px;
     border-radius: 5px;
@@ -41,6 +42,7 @@
 .egg-card{
     display: flex;
     margin-top: 150px;
+    margin-bottom: 150px;
     justify-content: space-evenly;
     border: solid 1px black;
     border-radius: 5px;
@@ -48,4 +50,14 @@
     padding-bottom: 30px;
 
     align-items: center;
+}
+
+.egg-card h2{
+    text-align: center;
+    color: white;
+}
+
+.egg-card button{
+    background-color:#D0B17A ;
+    color: #41521F;
 }

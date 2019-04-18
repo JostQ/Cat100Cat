@@ -37,8 +37,19 @@ abstract class AbstractController
                 'debug' => APP_DEV,
             ]
         );
+
+        $flash = $_SESSION['flash'];
+
         $this->twig->addGlobal('session', $_SESSION);
+        $this->twig->addGlobal('flash', $flash);
         $this->twig->addExtension(new DebugExtension());
+    }
+
+    public function unsetSession(): void
+    {
+        foreach ($_SESSION['flash'] as $key => $flash) {
+            unset($_SESSION['flash'][$key]);
+        }
     }
 
     public function pureRequestPost(array $data): array

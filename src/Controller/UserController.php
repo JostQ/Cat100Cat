@@ -63,6 +63,8 @@ class UserController extends AbstractController
                 ];
                 $userManager->insert($user);
 
+                $_SESSION['flash']['validate'] = 'Inscription réussi, vous pouvez vous connecter !';
+
                 header('Location: /user/login');
             } else {
                 $data['user'] = $post;
@@ -108,6 +110,8 @@ class UserController extends AbstractController
                 $data['errors'] = $errors;
             }
         }
+
+        $this->unsetSession();
 
         return $this->twig->render($view, $data);
     }

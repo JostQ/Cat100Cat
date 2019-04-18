@@ -1,22 +1,22 @@
-.navigation{
-    background-color:#D0B17A ;
-    min-height: 100px;
+.navigation {
+    background-color: #D0B17A;
+
 }
 
-.navigation > a{
-    color:#41521F !important;
+.navigation img{
+    height: 150px;
+    width: auto;
+}
+
+.navigation > a {
+    color: #41521F !important;
     margin-right: 100px;
-
+    margin-top: 65px;
 }
 
-.navigation li a{
-    color:#41521F!important;
-margin-left: 50px;
-    padding-top: 40px;
+.navigation li a {
+    color: #41521F !important;
+    padding-top: 60px;
 }
 
-.maclasse{
-    display: flex;
-
-}
 

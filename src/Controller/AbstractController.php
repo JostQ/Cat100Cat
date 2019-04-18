@@ -37,6 +37,16 @@ abstract class AbstractController
                 'debug' => APP_DEV,
             ]
         );
+        $this->twig->addGlobal('session', $_SESSION);
         $this->twig->addExtension(new DebugExtension());
+    }
+
+    public function pureRequestPost(array $data): array
+    {
+        $post = [];
+        foreach ($data as $key => $datum) {
+            $post[$key] = trim($datum);
+        }
+        return $post;
     }
 }

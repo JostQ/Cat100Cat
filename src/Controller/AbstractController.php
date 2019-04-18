@@ -64,4 +64,13 @@ abstract class AbstractController
         }
         return $post;
     }
+
+    public function isConnected(): bool
+    {
+        $result = false;
+        if (isset($_SESSION['id'])) {
+            $result = true;
+        }
+        return $result;
+    }
 }

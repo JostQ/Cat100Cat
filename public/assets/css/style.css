@@ -1,24 +1,34 @@
-.navigation {
-    background-color: #D0B17A;
-
+nav.navigation{
+    background-color:#D0B17A ;
+    min-height: 100px;
 }
 
-.navigation img{
-    height: 150px;
+.logo-nav{
+    height: 130px;
     width: auto;
 }
 
-.navigation > a {
-    color: #41521F !important;
+.navigation > a{
+    color:#41521F !important;
     margin-right: 100px;
-    margin-top: 65px;
+
 }
 
-.navigation li a {
-    color: #41521F !important;
-    padding-top: 60px;
+.navigation li a{
+    color:#41521F!important;
+    margin-left: 5em;
+    padding-top: 40px;
 }
 
+.navbar-nav{
+    display: flex;
+    justify-content: space-around;
+    margin-left: 6%;
+}
+
+.navigation li a{
+    font-size: 18px;
+}
 
 
 

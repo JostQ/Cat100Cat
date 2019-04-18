@@ -68,6 +68,8 @@ class UserController extends AbstractController
                 $data['validate'] = $validate;
 
                 $view = 'User/login.html.twig';
+            } else {
+                $data = $errors;
             }
         }
         return $this->twig->render($view, $data);
@@ -92,11 +94,20 @@ class UserController extends AbstractController
                 }
             }
 
-            $user = '';
+            $userManager = new UserManager();
+            $user = $userManager->selectUserByEmail($post['email']);
+
+            if (count($user) < 0) {
+                $errors['login'] = $errorSentence;
+            } elseif (!password_verify($post['password'], $user['password'])) {
+                $errors['login'] = $errorSentence;
+            }
 
             if (empty($errors)) {
                 $view = 'Home/index.html.twig';
                 $_SESSION = $user;
+            } else {
+                $data = $errors;
             }
         }
 

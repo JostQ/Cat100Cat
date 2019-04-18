@@ -72,4 +72,34 @@ class UserController extends AbstractController
         }
         return $this->twig->render($view, $data);
     }
+
+    public function login()
+    {
+        $data = [];
+
+        $view = 'User/login.html.twig';
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
+
+            $errorSentence = 'Identifiants incorrects';
+
+            $post = $this->pureRequestPost($_POST);
+
+            foreach ($post as $key => $value) {
+                if (empty($post[$key]) || !isset($post[$key])) {
+                    $errors['login'] = $errorSentence;
+                }
+            }
+
+            $user = '';
+
+            if (empty($errors)) {
+                $view = 'Home/index.html.twig';
+                $_SESSION = $user;
+            }
+        }
+
+        return $this->twig->render($view, $data);
+    }
 }

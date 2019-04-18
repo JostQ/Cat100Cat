@@ -1,0 +1,22 @@
+.navigation{
+    background-color:#D0B17A ;
+    min-height: 100px;
+}
+
+.navigation > a{
+    color:#41521F !important;
+    margin-right: 100px;
+
+}
+
+.navigation li a{
+    color:#41521F!important;
+margin-left: 50px;
+    padding-top: 40px;
+}
+
+.maclasse{
+    display: flex;
+
+}
+

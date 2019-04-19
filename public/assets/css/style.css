@@ -111,3 +111,60 @@ footer
     width: 100% !important;
     height: 100% !important;
 }
+
+/* CONTENU PAGE ACCUEIL */
+
+
+.bloc_test
+{
+    display: flex;
+    flex-wrap:nowrap;
+    margin-bottom: 20px;
+}
+
+.bloc_test div p{
+    width: 500px;
+}
+
+.txt
+{
+    margin-right: 20px;
+    padding: 43px;
+    color:#41521F;
+}
+
+.txt2
+{
+    margin-left: 20px;
+    padding: 43px;
+    color:#41521F;
+}
+
+.bloc_test1
+{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+}
+
+
+.img_description
+{
+    height: 250px;
+    width: 450px;
+}
+
+.img_etape_d
+{
+    height: 150px;
+    width: 200px;
+    float: left;
+
+}
+
+.img_etape_g
+{
+    height: 150px;
+    width: 200px;
+    flex-direction: column;
+}

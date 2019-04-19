@@ -10,16 +10,18 @@
         <div class="egg-img">
             <img src="{{ egg.image }}">
         </div>
-        <div>
+        <div class="desc">
             <h2 style="background-color: {{ egg.color }}">{{ egg.name }}</h2>
 <ul>
-    <li>Calibre : {{ egg.caliber }}</li>
-    <li>Rareté : {{ egg.rarity }}</li>
-    <li>Pouvoir : {{ egg.power }}</li>
-    <li>Origine : {{ egg.country }}</li>
+    <li><span>Calibre :</span> {{ egg.caliber }}</li>
+    <li><span>Rareté :</span> {{ egg.rarity }}</li>
+    <li><span>Pouvoir :</span> {{ egg.power }}</li>
+    <li><span>Origine :</span> {{ egg.country }}</li>
 </ul>
+            <div><a href="/Details/index"><button class="btn">Retour</button></a></div>
         </div>
-        <a href="/Details/index"><button class="btn">Retour</button></a>
-    </div>
+
+        </div>
+
 
 {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<section class="row justify-content-center">
+    <form class="col-8" method="post">
+        <input type="hidden" value="{{ deckId }}" name="deckId">
+        {% set i = 1 %}
+        {% for card in cards %}
+            <div class="col-12 form-check form-check-inline">
+                <div class="col-4">
+                    <img src="{{ card.image }}" alt="egg image" class="col-12">
+                    <h4>{{ card.name }}</h4>
+                </div>
+                <div class="col-7">
+                    <p>Calibre : {{ card.caliber }}</p>
+                    <p>Rareté : {{ card.rarity }}</p>
+                    <p>Pouvoir : {{ card.power }}</p>
+                </div>
+                <div class="col-1">
+                    <input type="checkbox" class="form-check-input" name="egg{{ i }}" value="{{ card.id }}">
+                </div>
+            </div>
+            {% set i = i + 1 %}
+        {% endfor %}
+        <button class="btn">Ajouter</button>
+    </form>
+</section>
+
+{% endblock %}

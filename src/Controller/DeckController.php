@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use App\Model\APIManager;
+use App\Model\CardManager;
 use App\Model\DeckManager;
 
 /**
@@ -39,6 +41,12 @@ class DeckController extends AbstractController
     {
         $deckManager = new DeckManager();
         $decks = $deckManager->selectAllByUserId();
+
+        $apiManager = new APIManager();
+
+        for ($i = 0; $i < count($decks); $i++) {
+            $decks[$i]['lord'] = $apiManager->getAllEggs('characters', $decks[$i]['lord_id']);
+        }
 
         return $this->twig->render('Deck/index.html.twig', ['decks' => $decks]);
     }
@@ -71,7 +79,17 @@ class DeckController extends AbstractController
      */
     public function add()
     {
-        $data = [];
+        $apiManager = new APIManager();
+
+        $nbCharacters = 5;
+
+        $characters = $apiManager->selectNCharacters($nbCharacters);
+
+        $eggsPerCharacter = $apiManager->selectNineEggsForNCharacter($nbCharacters);
+
+        $data = ['characters' => $characters,
+            'eggsPerCharacter' => $eggsPerCharacter,
+            ];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors = [];
@@ -88,13 +106,28 @@ class DeckController extends AbstractController
 
             if (empty($errors)) {
                 $deckManager = new DeckManager();
+                $cardManager = new CardManager();
+
                 $deck = [
                     'name' => $post['name'],
                     'lord' => $post['lord'],
                     'user_id' => $_SESSION['id']
                 ];
                 $id = $deckManager->insert($deck);
-                header('Location:/deck/show/' . $id);
+
+                $card = [];
+
+                foreach ($eggsPerCharacter as $key => $cards) {
+                    if ($key === $post['lord']) {
+                        foreach ($cards as $selfCard) {
+                            $card['egg'] = $selfCard->id;
+                            $card['deck'] = $id;
+                            $cardManager->insert($card);
+                        }
+                    }
+                }
+
+                header('Location:/deck/addcards/' . $id);
             } else {
                 $data['deck'] = $post;
                 $data['errors'] = $errors;
@@ -102,6 +135,51 @@ class DeckController extends AbstractController
         }
 
         return $this->twig->render('Deck/add.html.twig', $data);
+    }
+
+    public function addcards(int $deckId)
+    {
+        $cardManager = new CardManager();
+        $apiManager = new APIManager();
+
+        $data = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $errors = [];
+
+            $post = $this->pureRequestPost($_POST);
+
+            if (count($post) < 6 || count($post) > 6) {
+                $errors['cards'] = 'Vous devez sélectionner 5 cartes';
+            }
+
+            if (empty($errors)) {
+                $id = $post['deckId'];
+
+                foreach ($post as $key => $egg) {
+                    if ($key !== 'deckID') {
+                        $cardManager->updateSelected($egg, $id);
+                    }
+                }
+
+                header('Location: /deck/index');
+            } else {
+                $data['errors'] = $errors;
+            }
+        }
+
+        $cards = $cardManager->selectAllByDeckId($deckId);
+
+        $eggs = [];
+        foreach ($cards as $card) {
+            $eggs[] = $apiManager->getAllEggs('eggs', $card['egg_id']);
+        }
+
+        $data['deckId'] = $deckId;
+
+        $data['cards'] = $eggs;
+
+        return $this->twig->render('Deck/addcards.html.twig', $data);
     }
 
 

@@ -125,6 +125,7 @@ footer
     display: flex;
     flex-wrap:nowrap;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .bloc_test div p{
@@ -133,15 +134,15 @@ footer
 
 .txt
 {
-    margin-right: 20px;
-    padding: 43px;
+    margin-right: 15px;
+    padding: 65px;
     color:#41521F;
 }
 
 .txt2
 {
-    margin-left: 20px;
-    padding: 65px;
+    margin-left: 15px;
+    padding-top: 95px;
     color:#41521F;
 }
 
@@ -150,24 +151,33 @@ footer
     display: flex;
     flex-direction: row-reverse;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 
 .img_description
 {
-    height: 250px;
-    width: 450px;
+    background-color: #D0B17A ;
+    height: 500px;
+    width: auto;
 }
 
 .img_etape_d
 {
-    height: 150px;
-    width: 200px;
+    height: 300px;
+    width: auto;
     float: left;
 
 }
 
 .img_etape_g
+{
+    height: 400px;
+    width: auto;
+    flex-direction: column;
+}
+
+.img_etape_3
 {
     height: 270px;
     width: auto;

@@ -55,7 +55,7 @@ class CardManager extends AbstractManager
         $statement = $this->pdo->prepare("UPDATE $this->table SET `is_selected` = true 
                                                 WHERE egg_id = :egg AND deck_id = :id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
-        $statement->bindValue('egg', $egg_id, \PDO::PARAM_BOOL);
+        $statement->bindValue('egg', $egg_id, \PDO::PARAM_STR);
 
         return $statement->execute();
     }
@@ -76,5 +76,14 @@ class CardManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function selectCardsFromDeckIsTrue(int $id): array
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM ' . $this->table . ' WHERE deck_id = :deck AND is_selected');
+        $statement->bindValue('deck', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

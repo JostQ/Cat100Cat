@@ -40,11 +40,15 @@ class DeckController extends AbstractController
     public function index()
     {
         $deckManager = new DeckManager();
+        $cardManager = new CardManager();
         $decks = $deckManager->selectAllByUserId();
 
         $apiManager = new APIManager();
 
         for ($i = 0; $i < count($decks); $i++) {
+            foreach ($cardManager->selectCardsFromDeckIsTrue($decks[$i]['id']) as $card) {
+                $decks[$i]['cards'][] = $apiManager->getAllEggs('eggs', $card['egg_id']);
+            }
             $decks[$i]['lord'] = $apiManager->getAllEggs('characters', $decks[$i]['lord_id']);
         }
 
@@ -148,6 +152,8 @@ class DeckController extends AbstractController
             $errors = [];
 
             $post = $this->pureRequestPost($_POST);
+
+            var_dump($post);
 
             if (count($post) < 6 || count($post) > 6) {
                 $errors['cards'] = 'Vous devez sélectionner 5 cartes';

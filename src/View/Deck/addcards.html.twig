@@ -4,6 +4,11 @@
 
 <section class="row justify-content-center">
     <form class="col-8" method="post">
+        {% if errrors.cards is defined %}
+            <div class="alert alert-danger">
+                {{ errors.cards }}
+            </div>
+        {% endif %}
         <input type="hidden" value="{{ deckId }}" name="deckId">
         {% set i = 1 %}
         {% for card in cards %}

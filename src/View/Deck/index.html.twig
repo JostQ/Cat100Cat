@@ -17,6 +17,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ deck.name }}</h5>
                                 <p class="card-text">{{ deck.lord.name }}</p>
+                                <ul class="col-8">
+                                    {% for card in deck.cards %}
+                                        <li>
+                                            <img src="{{ card.image }}" alt="img" style="width: 10%">
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,8 @@
 
 namespace App\Model;
 
+use function GuzzleHttp\Promise\all;
+
 class APIManager
 {
 
@@ -27,5 +29,30 @@ class APIManager
         $data = json_decode($contents);
 
         return $data;
+    }
+
+    public function selectNCharacters(int $number): array
+    {
+        $allCharacters = $this->getAllEggs('characters');
+        $characters = [];
+        for ($i = 0; $i < $number; $i++) {
+            $characters[$i] = $allCharacters[$i];
+        }
+        return $characters;
+    }
+
+    public function selectNineEggsForNCharacter(int $number): array
+    {
+        $characters = $this->selectNCharacters($number);
+        $allEggs = $this->getAllEggs('eggs');
+        $eggs = [];
+        $step = 0;
+        for ($i = 0; $i < $number; $i++) {
+            for ($j = $step; $j < 9 + $step; $j++) {
+                $eggs[$characters[$i]->id][] = $allEggs[$j];
+            }
+            $step += 9;
+        }
+        return $eggs;
     }
 }

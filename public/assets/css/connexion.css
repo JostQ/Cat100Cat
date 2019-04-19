@@ -1,25 +1,30 @@
-body.signup
+body.login
+{
+    background-color: #D0B17A
+}
+
+section.connexion
+{
+    margin-top: 30px;
+    margin-bottom: 100px;
+    border-radius: 8px;
+}
+
+.form-inscription
 {
     background-color: #D0B17A;
+    padding: 1rem;
 }
 
-form{
-    margin-top: 30px;
-    margin-bottom: 150px;
-    border-radius: 8px;
-    background-color: #D0B17A;
-}
-
-h2{
-    margin-top: 90px;
-    text-align: center;
+h2
+{
     font-family: Amaz;
     font-size: 5rem;
     color: #41521F;
+    margin-top: 90px;
 }
 
 .button-connect
 {
     background-color: #FFFF;
-    width-right: 50%;
 }

@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    <h2>Création du deck</h2>
+
+    <section class="row justify-content-center">
+        <form method="post" class="col-12 col-md-8">
+            {% if errors.name is defined %}
+                <div class="alert alert-danger">
+                    {{ errors.name }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="name">Nom du deck</label>
+                <input type="text" id="name" name="name" class="form-control" value="{{ deck.name }}">
+            </div>
+            {% if errors.lord is defined %}
+                <div class="alert alert-danger">
+                    {{ errors.lord }}
+                </div>
+            {% endif %}
+            {% for character in characters %}
+                <div class="form-check form-check-inline">
+                    <div class="col-3">
+                        <img src="{{ character.image }}" class="col-12" alt="lord image">
+                        <p class="text-center">{{ character.name }}</p>
+                    </div>
+                    <div class="border col-7">
+                        {% for key, eggs in eggsPerCharacter %}
+                            {% if character.id == key %}
+                                {% for egg in eggs %}
+                                    <img src="{{ egg.image }}" alt="egg image" class="col-auto" style="width: 30%;">
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <input type="radio" class="form-check-input" name="lord" value="{{ character.id }}">
+            {% endfor %}
+            <button class="btn" type="submit">Suivant</button>
+        </form>
+    </section>
+
+{% endblock %}

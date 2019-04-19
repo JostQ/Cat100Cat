@@ -1,14 +1,18 @@
 {% extends 'layout.html.twig' %}
 {% block title %}Liste{% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/deck.css">
+{% endblock %}
+
 {% block content %}
-    <h2>Liste de vos decks</h2>
     <section class="row justify-content-center">
+        <h2 class="col-12 text-center mt-4 mb-4">Liste de vos decks</h2>
         {% if decks is empty %}
             <h3 class="col-12 text-center">Vous n'avez pas de deck.</h3>
         {% else %}
             {% for deck in decks %}
-                <div class="card col-12 col-mb-4">
+                <div class="card col-12 col-mb-4 no-gutters">
                     <div class="row no-gutters">
                         <div class="col-md-4">
                             <img src="{{ deck.lord.image}}" class="card-img" alt="lord image">
@@ -17,6 +21,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ deck.name }}</h5>
                                 <p class="card-text">{{ deck.lord.name }}</p>
+                                <p class="card-text"><a href="/deck/delete/{{ deck.id }}">Supprimer le deck</a></p>
                                 <ul class="col-8">
                                     {% for card in deck.cards %}
                                         <li>
@@ -31,7 +36,7 @@
             {% endfor %}
         {% endif %}
         <div class="col-12 text-center">
-            <a href="/deck/add" class="btn btn-dark">Créer un deck !</a>
+            <a href="/deck/add" class="btn btn-create">Créer un deck !</a>
         </div>
     </section>
 {% endblock %}

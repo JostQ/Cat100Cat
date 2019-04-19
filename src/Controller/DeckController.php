@@ -153,8 +153,6 @@ class DeckController extends AbstractController
 
             $post = $this->pureRequestPost($_POST);
 
-            var_dump($post);
-
             if (count($post) < 6 || count($post) > 6) {
                 $errors['cards'] = 'Vous devez sélectionner 5 cartes';
             }

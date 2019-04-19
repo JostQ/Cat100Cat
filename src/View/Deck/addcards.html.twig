@@ -1,10 +1,15 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/deck.css">
+{% endblock %}
+
 {% block content %}
 
-<section class="row justify-content-center">
+<section class="row mt-4 justify-content-center">
     <form class="col-8" method="post">
         {% if errrors.cards is defined %}
+            {{ dump(errors) }}
             <div class="alert alert-danger">
                 {{ errors.cards }}
             </div>
@@ -12,7 +17,7 @@
         <input type="hidden" value="{{ deckId }}" name="deckId">
         {% set i = 1 %}
         {% for card in cards %}
-            <div class="col-12 form-check form-check-inline">
+            <div class="col-12 mb-4 form-check bg-vert form-check-inline">
                 <div class="col-4">
                     <img src="{{ card.image }}" alt="egg image" class="col-12">
                     <h4>{{ card.name }}</h4>
@@ -28,7 +33,7 @@
             </div>
             {% set i = i + 1 %}
         {% endfor %}
-        <button class="btn">Ajouter</button>
+        <button class="btn btn-create">Ajouter</button>
     </form>
 </section>
 

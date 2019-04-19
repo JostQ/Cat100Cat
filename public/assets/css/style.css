@@ -3,6 +3,14 @@
     src: url('fonts/AmazDooMLeft.ttf');
 }
 
+h2 {
+    margin-top: 90px;
+    text-align: center;
+    font-family: Amaz;
+    font-size: 5rem;
+    color: #41521F;
+}
+
 /* HEADER */
 
 .navigation{

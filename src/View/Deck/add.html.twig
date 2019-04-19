@@ -1,8 +1,12 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/deck.css">
+{% endblock %}
+
 {% block content %}
 
-    <h2>Création du deck</h2>
+    <h2 class="mt-4">Creation du deck</h2>
 
     <section class="row justify-content-center">
         <form method="post" class="col-12 col-md-8">
@@ -26,7 +30,7 @@
                         <img src="{{ character.image }}" class="col-12" alt="lord image">
                         <p class="text-center">{{ character.name }}</p>
                     </div>
-                    <div class="border col-7">
+                    <div class="border bg-vert col-7">
                         {% for key, eggs in eggsPerCharacter %}
                             {% if character.id == key %}
                                 {% for egg in eggs %}
@@ -38,7 +42,7 @@
                 </div>
                 <input type="radio" class="form-check-input" name="lord" value="{{ character.id }}">
             {% endfor %}
-            <button class="btn" type="submit">Suivant</button>
+            <button class="btn btn-create" type="submit">Suivant</button>
         </form>
     </section>
 

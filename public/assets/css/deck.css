@@ -1,0 +1,27 @@
+.card {
+    background-color:#D0B17A ;
+    padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: 15px;
+    border: solid black 1px;
+    color:#41521F;
+}
+
+.btn-create{
+    background-color:#41521F;
+    color: #FFF;
+    margin-bottom: 15px;
+}
+
+h2{
+    text-align: center;
+    font-family: Amaz;
+    font-size: 5rem;
+    color: #41521F;
+}
+
+.bg-vert{
+    color:#41521F;
+    background-color:#D0B17A ;
+    border: solid black 1px;
+}

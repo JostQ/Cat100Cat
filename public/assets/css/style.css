@@ -136,7 +136,7 @@ footer
 .txt2
 {
     margin-left: 20px;
-    padding: 43px;
+    padding: 65px;
     color:#41521F;
 }
 
@@ -164,7 +164,7 @@ footer
 
 .img_etape_g
 {
-    height: 150px;
-    width: 200px;
+    height: 270px;
+    width: auto;
     flex-direction: column;
 }

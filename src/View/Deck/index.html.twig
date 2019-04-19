@@ -2,8 +2,36 @@
 {% block title %}Liste{% endblock %}
 
 {% block content %}
-{% for deck in decks %}
-    {{ deck.name }}
-    {{ deck.lord }}
-{% endfor %}
+    <h2>Liste de vos decks</h2>
+    <section class="row justify-content-center">
+        {% if decks is empty %}
+            <h3 class="col-12 text-center">Vous n'avez pas de deck.</h3>
+        {% else %}
+            {% for deck in decks %}
+                <div class="card col-12 col-mb-4">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="{{ deck.lord.image}}" class="card-img" alt="lord image">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ deck.name }}</h5>
+                                <p class="card-text">{{ deck.lord.name }}</p>
+                                <ul class="col-8">
+                                    {% for card in deck.cards %}
+                                        <li>
+                                            <img src="{{ card.image }}" alt="img" style="width: 10%">
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="col-12 text-center">
+            <a href="/deck/add" class="btn btn-dark">Créer un deck !</a>
+        </div>
+    </section>
 {% endblock %}

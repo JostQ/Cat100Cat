@@ -115,4 +115,10 @@ class UserController extends AbstractController
 
         return $this->twig->render($view, $data);
     }
+
+    public function logout()
+    {
+        session_destroy();
+        header('Location: /');
+    }
 }

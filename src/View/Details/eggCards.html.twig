@@ -4,7 +4,11 @@
      <link rel="stylesheet" type="text/css" href="/assets/css/egglisting.css">
  {% endblock %}
 {% block content %}
-    <div class="eggs-list container">
+    <div class="container">
+
+    <h2>Caractéristiques des oeufs</h2>
+    <div class="eggs-list">
+
         {% for egg in eggs %}
 
             <div class="eggs-card">
@@ -12,5 +16,6 @@
                 <a href="/details/show/{{ egg.id }}">{{ egg.name }}</a><br>
             </div>
         {% endfor %}
+    </div>
     </div>
 {% endblock %}
